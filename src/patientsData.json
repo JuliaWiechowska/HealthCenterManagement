@@ -1,0 +1,52 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "name": "John",
+      "surname": "Doe",
+      "birthday": "01/01/2000",
+      "city": "Katowice",
+      "street": "Słowackiego"
+    },
+    {
+      "id": "2",
+      "name": "Jane",
+      "surname": "Doe",
+      "birthday": "02/05/1990",
+      "city": "Bytom",
+      "street": "Węgierska"
+    },
+    {
+      "id": "3",
+      "name": "Mark",
+      "surname": "Kowalski",
+      "birthday": "03/01/1980",
+      "city": "Nowy Sącz",
+      "street": "Krakowska"
+    },
+    {
+      "id": "4",
+      "name": "Adam",
+      "surname": "Piotrowski",
+      "birthday": "04/01/1970",
+      "city": "Warszawa",
+      "street": "Solidarności"
+    },
+    {
+      "id": "5",
+      "name": "Sebastian",
+      "surname": "Dębowski",
+      "birthday": "05/01/1960",
+      "city": "Kraków",
+      "street": "Olszowa"
+    },
+    {
+      "id": "6",
+      "name": "Jan",
+      "surname": "Kowalski",
+      "birthday": "06/01/1950",
+      "city": "Kraków",
+      "street": "Biegunowa"
+    }
+  ]
+}
