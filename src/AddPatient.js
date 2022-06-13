@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import data from "./patientsData.json";
+import "./patients.css";
 
 function AddPatient({ patientsArray, setPatientsArray }) {
   const [currentIndex, setCurrentIndex] = useState(7);
@@ -31,17 +31,19 @@ function AddPatient({ patientsArray, setPatientsArray }) {
     setStreet("");
   };
   return (
-    <div>
+    <div className="txt-fields">
       <TextField
         id="outlined-helperText"
         label="Name"
         value={name}
+        sx={{ width: 220 }}
         onChange={(e) => setName(e.target.value)}
       />
       <TextField
         id="outlined-helperText"
         label="Surname"
         value={surname}
+        sx={{ width: 220 }}
         onChange={(e) => setSurname(e.target.value)}
       />
       <TextField
@@ -59,12 +61,14 @@ function AddPatient({ patientsArray, setPatientsArray }) {
         id="outlined-helperText"
         label="City"
         value={city}
+        sx={{ width: 220 }}
         onChange={(e) => setCity(e.target.value)}
       />
       <TextField
         id="outlined-helperText"
         label="Street"
         value={street}
+        sx={{ width: 220 }}
         onChange={(e) => setStreet(e.target.value)}
       />
       <Button variant="contained" color="primary" onClick={handleSubmitCLick}>
