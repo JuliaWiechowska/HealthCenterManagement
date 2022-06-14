@@ -164,7 +164,6 @@ export default function Navigation() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Typography paragraph>xyz</Typography>
       </Main>
     </Box>
   );

@@ -11,7 +11,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TablePatients({
   patientsArray,
@@ -32,6 +32,45 @@ function TablePatients({
   const handleClose = () => {
     setOpen(false);
   };
+
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [birthday, setBirthday] = useState("2017-05-24");
+  const [city, setCity] = useState("");
+  const [street, setStreet] = useState("");
+
+  useEffect(() => {
+    if (!currentEditId) return;
+    const currentPatient = patientsArray.find(
+      (patient) => patient.id === currentEditId
+    );
+    if (!currentPatient) return;
+    setName(currentPatient.name);
+    setSurname(currentPatient.surname);
+    setBirthday(currentPatient.birthday);
+    setCity(currentPatient.city);
+    setStreet(currentPatient.street);
+  }, [currentEditId, patientsArray]);
+
+  const handleSave = () => {
+    const newPatientsArray = patientsArray.map((patient) => {
+      if (patient.id === currentEditId) {
+        return {
+          ...patient,
+          name: name,
+          surname: surname,
+          birthday: birthday,
+          city: city,
+          street: street,
+        };
+      }
+      return patient;
+    });
+    setPatientsArray(newPatientsArray);
+    setCurrentEditId(null);
+    setOpen(false);
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -79,20 +118,49 @@ function TablePatients({
               <TextField
                 autoFocus
                 margin="dense"
-                id="id"
                 label="Name"
-                type="name"
-                defaultValue={
-                  patientsArray.find((patient) => patient.id === currentEditId)
-                    ?.name
-                }
+                value={name}
                 fullWidth
                 variant="standard"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Surname"
+                value={surname}
+                fullWidth
+                variant="standard"
+                onChange={(e) => setSurname(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Birthday"
+                value={birthday}
+                fullWidth
+                variant="standard"
+                type="date"
+                onChange={(e) => setBirthday(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="City"
+                value={city}
+                fullWidth
+                variant="standard"
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Street"
+                value={street}
+                fullWidth
+                variant="standard"
+                onChange={(e) => setStreet(e.target.value)}
               />
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={handleClose}>Save</Button>
+              <Button onClick={handleSave}>Save</Button>
             </DialogActions>
           </Dialog>
         </TableBody>
