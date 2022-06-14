@@ -19,7 +19,6 @@ function TablePatients({
   currentEditId,
   setCurrentEditId,
 }) {
-  //const [currentEditId, setCurrentEditId] = useState(null);
   const handleDeleteClick = (id) => {
     setPatientsArray(patientsArray.filter((patient) => patient.id !== id));
   };

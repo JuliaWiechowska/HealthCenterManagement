@@ -4,7 +4,7 @@
       "id": "1",
       "name": "John",
       "surname": "Doe",
-      "birthday": "01/01/2000",
+      "birthday": "2000-01-01",
       "city": "Katowice",
       "street": "Słowackiego"
     },
@@ -12,7 +12,7 @@
       "id": "2",
       "name": "Jane",
       "surname": "Doe",
-      "birthday": "02/05/1990",
+      "birthday": "1998-01-01",
       "city": "Bytom",
       "street": "Węgierska"
     },
@@ -20,7 +20,7 @@
       "id": "3",
       "name": "Mark",
       "surname": "Kowalski",
-      "birthday": "03/01/1980",
+      "birthday": "1990-01-01",
       "city": "Nowy Sącz",
       "street": "Krakowska"
     },
@@ -28,7 +28,7 @@
       "id": "4",
       "name": "Adam",
       "surname": "Piotrowski",
-      "birthday": "04/01/1970",
+      "birthday": "1978-01-01",
       "city": "Warszawa",
       "street": "Solidarności"
     },
@@ -36,7 +36,7 @@
       "id": "5",
       "name": "Sebastian",
       "surname": "Dębowski",
-      "birthday": "05/01/1960",
+      "birthday": "1985-01-01",
       "city": "Kraków",
       "street": "Olszowa"
     },
@@ -44,7 +44,7 @@
       "id": "6",
       "name": "Jan",
       "surname": "Kowalski",
-      "birthday": "06/01/1950",
+      "birthday": "1956-01-01",
       "city": "Kraków",
       "street": "Biegunowa"
     }

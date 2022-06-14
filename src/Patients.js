@@ -1,11 +1,7 @@
 import data from "./patientsData.json";
-
 import { useState } from "react";
-
 import TablePatients from "./TablePatients";
-
 import AddPatient from "./AddPatient.js";
-
 import "./patients.css";
 
 function Patients() {

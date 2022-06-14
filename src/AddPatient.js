@@ -2,6 +2,10 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import "./patients.css";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 
 function AddPatient({ patientsArray, setPatientsArray }) {
   const [currentIndex, setCurrentIndex] = useState(7);
@@ -29,51 +33,80 @@ function AddPatient({ patientsArray, setPatientsArray }) {
     setSurname("");
     setCity("");
     setStreet("");
+    setOpen(false);
   };
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className="txt-fields">
-      <TextField
-        id="outlined-helperText"
-        label="Name"
-        value={name}
-        sx={{ width: 220 }}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <TextField
-        id="outlined-helperText"
-        label="Surname"
-        value={surname}
-        sx={{ width: 220 }}
-        onChange={(e) => setSurname(e.target.value)}
-      />
-      <TextField
-        id="date"
-        label="Birthday"
-        type="date"
-        value={birthday}
-        onChange={(e) => setBirthday(e.target.value)}
-        sx={{ width: 220 }}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-      <TextField
-        id="outlined-helperText"
-        label="City"
-        value={city}
-        sx={{ width: 220 }}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <TextField
-        id="outlined-helperText"
-        label="Street"
-        value={street}
-        sx={{ width: 220 }}
-        onChange={(e) => setStreet(e.target.value)}
-      />
-      <Button variant="contained" color="primary" onClick={handleSubmitCLick}>
-        Submit
+    <div className="add-btn">
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => handleClickOpen()}
+      >
+        Add Patient
       </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add patient</DialogTitle>
+        <DialogContent>
+          <TextField
+            id="outlined-helperText"
+            variant="standard"
+            label="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="outlined-helperText"
+            variant="standard"
+            label="Surname"
+            value={surname}
+            onChange={(e) => setSurname(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="date"
+            label="Birthday"
+            variant="standard"
+            type="date"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <TextField
+            id="outlined-helperText"
+            variant="standard"
+            label="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <br />
+          <TextField
+            id="outlined-helperText"
+            variant="standard"
+            label="Street"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleSubmitCLick}>Submit</Button>
+        </DialogActions>
+      </Dialog>
+
+      <div className="txt-fields"></div>
     </div>
   );
 }
