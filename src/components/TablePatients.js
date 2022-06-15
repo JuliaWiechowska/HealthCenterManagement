@@ -14,7 +14,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useEffect, useState } from "react";
-import { Icon } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import _ from "lodash";
 
 function TablePatients({
   patientsArray,
@@ -36,11 +38,21 @@ function TablePatients({
     setOpen(false);
   };
 
+  const [lastSortColumnId, setLastSortColumnId] = useState(null);
+  const handleSort = (columnId) => {
+    if (lastSortColumnId === columnId) return;
+    setPatientsArray(_.sortBy(patientsArray, columnId));
+    setLastSortColumnId(columnId);
+  };
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [birthday, setBirthday] = useState("2017-05-24");
   const [city, setCity] = useState("");
   const [street, setStreet] = useState("");
+
+  const [findSurname, setFindSurname] = useState("");
+  const [currentArray, setCurrentArray] = useState(patientsArray);
 
   useEffect(() => {
     if (!currentEditId) return;
@@ -54,6 +66,17 @@ function TablePatients({
     setCity(currentPatient.city);
     setStreet(currentPatient.street);
   }, [currentEditId, patientsArray]);
+
+  useEffect(() => {
+    if (!findSurname) {
+      setCurrentArray(patientsArray);
+      return;
+    }
+    const filteredPatients = patientsArray.filter((patient) =>
+      patient.surname.toLowerCase().includes(findSurname.toLowerCase())
+    );
+    setCurrentArray(filteredPatients);
+  }, [findSurname, patientsArray]);
 
   const handleSave = () => {
     const newPatientsArray = patientsArray.map((patient) => {
@@ -79,17 +102,36 @@ function TablePatients({
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Surname</TableCell>
-            <TableCell>Birthdate</TableCell>
-            <TableCell>City</TableCell>
-            <TableCell>Street</TableCell>
+            <TableCell id="id" onClick={(e) => handleSort(e.target.id)}>
+              ID
+            </TableCell>
+            <TableCell id="name" onClick={(e) => handleSort(e.target.id)}>
+              Name
+            </TableCell>
+            <TableCell id="surname" onClick={(e) => handleSort(e.target.id)}>
+              Surname
+              <TextField
+                type="text"
+                variant="standard"
+                value={findSurname}
+                onChange={(e) => setFindSurname(e.target.value)}
+              />
+              <SearchIcon />
+            </TableCell>
+            <TableCell id="birthdate" onClick={(e) => handleSort(e.target.id)}>
+              Birthdate
+            </TableCell>
+            <TableCell id="city" onClick={(e) => handleSort(e.target.id)}>
+              City
+            </TableCell>
+            <TableCell id="street" onClick={(e) => handleSort(e.target.id)}>
+              Street
+            </TableCell>
             <TableCell>Options</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {patientsArray.map((patient) => (
+          {currentArray.map((patient) => (
             <TableRow key={patient.id}>
               <TableCell>{patient.id}</TableCell>
               <TableCell>{patient.name}</TableCell>
@@ -98,20 +140,20 @@ function TablePatients({
               <TableCell>{patient.city}</TableCell>
               <TableCell>{patient.street}</TableCell>
               <TableCell>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleDeleteClick(patient.id)}
-                >
-                  <DeleteIcon />
-                </Button>
-                <Button
+                <IconButton
                   variant="contained"
                   color="primary"
                   onClick={() => handleClickOpen(patient.id)}
                 >
                   <EditIcon />
-                </Button>
+                </IconButton>
+                <IconButton
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleDeleteClick(patient.id)}
+                >
+                  <DeleteIcon />
+                </IconButton>
               </TableCell>
             </TableRow>
           ))}
