@@ -1,8 +1,8 @@
-import data from "./patientsData.json";
+import data from "../patientsData.json";
 import { useState } from "react";
 import TablePatients from "./TablePatients";
 import AddPatient from "./AddPatient.js";
-import "./patients.css";
+import "../styles/patients.css";
 
 function Patients() {
   const [patientsArray, setPatientsArray] = useState(data.patients || []);

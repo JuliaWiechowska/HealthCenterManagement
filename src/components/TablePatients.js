@@ -7,11 +7,14 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useEffect, useState } from "react";
+import { Icon } from "@mui/material";
 
 function TablePatients({
   patientsArray,
@@ -100,14 +103,14 @@ function TablePatients({
                   color="primary"
                   onClick={() => handleDeleteClick(patient.id)}
                 >
-                  Delete
+                  <DeleteIcon />
                 </Button>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => handleClickOpen(patient.id)}
                 >
-                  Edit
+                  <EditIcon />
                 </Button>
               </TableCell>
             </TableRow>

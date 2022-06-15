@@ -1,11 +1,12 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import "./patients.css";
+import "../styles/patients.css";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import AddIcon from "@mui/icons-material/Add";
 
 function AddPatient({ patientsArray, setPatientsArray }) {
   const [currentIndex, setCurrentIndex] = useState(7);
@@ -51,7 +52,8 @@ function AddPatient({ patientsArray, setPatientsArray }) {
         color="primary"
         onClick={() => handleClickOpen()}
       >
-        Add Patient
+        <AddIcon />
+        Add patient
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add patient</DialogTitle>

@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Project 1",
+      "description": "This is a project",
+      "date": "2022-01-01",
+      "patients": [
+        {
+          "id": 1,
+          "agreement": false
+        },
+        {
+          "id": 2,
+          "agreement": false
+        },
+        {
+          "id": 3,
+          "agreement": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Project 2",
+      "description": "This is a project",
+      "date": "2022-01-01",
+      "patients": [
+        {
+          "id": 4,
+          "agreement": true
+        },
+        {
+          "id": 2,
+          "agreement": false
+        },
+        {
+          "id": 3,
+          "agreement": true
+        }
+      ]
+    }
+  ]
+}

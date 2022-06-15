@@ -136,15 +136,20 @@ export default function Navigation() {
             >
               <ListItemButton>
                 <ListItemIcon>{<GroupIcon />}</ListItemIcon>
-                <ListItemText primary="Pacjenci" />
+                <ListItemText primary="Patients" />
               </ListItemButton>
             </Link>
           </ListItem>
           <ListItem>
-            <ListItemButton>
-              <ListItemIcon>{<GroupIcon />}</ListItemIcon>
-              <ListItemText primary="Badania" />
-            </ListItemButton>
+            <Link
+              to="projects"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItemButton>
+                <ListItemIcon>{<GroupIcon />}</ListItemIcon>
+                <ListItemText primary="Projects" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem>
             <ListItemButton>
