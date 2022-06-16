@@ -125,7 +125,7 @@ export default function Navigation() {
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
               <ListItemButton>
                 <ListItemIcon>{<GroupIcon />}</ListItemIcon>
-                <ListItemText primary="Strona główna" />
+                <ListItemText primary="Main page" />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -154,13 +154,13 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton>
               <ListItemIcon>{<GroupIcon />}</ListItemIcon>
-              <ListItemText primary="Wyniki badań" />
+              <ListItemText primary="Findings" />
             </ListItemButton>
           </ListItem>
           <ListItem>
             <ListItemButton>
               <ListItemIcon>{<GradeIcon />}</ListItemIcon>
-              <ListItemText primary="Podsumowanie" />
+              <ListItemText primary="Summary" />
             </ListItemButton>
           </ListItem>
 
